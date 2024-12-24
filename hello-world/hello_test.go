@@ -1,0 +1,56 @@
+package main
+
+import "testing"
+
+func TestHello(t *testing.T) {
+	t.Run("saying hello to people", func(t *testing.T) {
+		got := Hello("Chris", "")
+		want := "Hello, Chris"
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("say 'Hello, world' when an empty string is supplied", func(t *testing.T) {
+		got := Hello("", "")
+		want := "Hello, World"
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("in Spanish", func(t *testing.T) {
+		got := Hello("Elodie", "Spanish")
+		want := "Hola, Elodie"
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("in French", func(t *testing.T) {
+		got := Hello("Brodie", "French")
+		want := "Bonjour, Brodie"
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("in Romanian", func(t *testing.T) {
+		got := Hello("Gigi", "Romanian")
+		want := "Salut, Gigi"
+		assertCorrectMessage(t, got, want)
+	})
+}
+
+func assertCorrectMessage(t testing.TB, got, want string) {
+	t.Helper()
+	if got != want {
+		t.Errorf("got %q want %q", got, want)
+	}
+}
+
+func TestFullGreeting(t *testing.T) {
+	t.Run("in formal way", func(t *testing.T) {
+		got := FullGreeting("Carlos", true)
+		want := "Good day, Carlos!"
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("not in formal way", func(t *testing.T) {
+		got := FullGreeting("Carlos", false)
+		want := "Sup, Carlos!"
+		assertCorrectMessage(t, got, want)
+	})
+}
