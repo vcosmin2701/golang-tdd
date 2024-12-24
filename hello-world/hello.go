@@ -23,6 +23,17 @@ func Hello(name string, language string) string {
 	return greetingPrefix(language) + name
 }
 
+func FullGreeting(name string, formal bool) string {
+	if name == "" {
+		name = "World"
+	}
+
+	return getFormalPrefix(formal) + name + "!"
+}
+
+// Exercise Full Greeting: FullGreeting(name, formal bool)
+// Add "Good day" if formal, else "Sup, "
+
 func greetingPrefix(language string) (prefix string) {
 	switch language {
 	case french:
@@ -33,6 +44,15 @@ func greetingPrefix(language string) (prefix string) {
 		prefix = romanianHelloPrefix
 	default:
 		prefix = englishHelloPrefix
+	}
+	return
+}
+
+func getFormalPrefix(formal bool) (prefix string) {
+	if formal {
+		prefix = "Good day, "
+	} else {
+		prefix = "Sup, "
 	}
 	return
 }

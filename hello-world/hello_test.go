@@ -40,3 +40,17 @@ func assertCorrectMessage(t testing.TB, got, want string) {
 		t.Errorf("got %q want %q", got, want)
 	}
 }
+
+func TestFullGreeting(t *testing.T) {
+	t.Run("in formal way", func(t *testing.T) {
+		got := FullGreeting("Carlos", true)
+		want := "Good day, Carlos!"
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("not in formal way", func(t *testing.T) {
+		got := FullGreeting("Carlos", false)
+		want := "Sup, Carlos!"
+		assertCorrectMessage(t, got, want)
+	})
+}
